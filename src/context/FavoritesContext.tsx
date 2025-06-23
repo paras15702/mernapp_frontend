@@ -59,7 +59,7 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
     useEffect(() => {
         async function loadFavorites(): Promise<void> {
             try {
-                const response = await fetch("http://localhost:3000/getFavorites", {
+                const response = await fetch("REACT_APP_SERVER_BASE_URL/getFavorites", {
                     credentials: "include"
                 });
                 if (response.ok) {
@@ -94,7 +94,7 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
             if (!localStorage.getItem('token')) {
               console.log("no token");
               try {
-                const response: Response = await fetch('http://localhost:3000/getToken', {
+                const response: Response = await fetch('REACT_APP_SERVER_BASE_URL/getToken', {
                   method: 'POST'
                 });
                 const data: { token: string } = await response.json();
@@ -137,7 +137,7 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
             
             if (!token) {
               try {
-                const response: Response = await fetch('http://localhost:3000/getToken', {
+                const response: Response = await fetch('REACT_APP_SERVER_BASE_URL/getToken', {
                   method: 'POST'
                 });
                 const data: { token: string } = await response.json();
@@ -171,7 +171,7 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
                 return null;
             }
         try {
-            const response = await fetch(`http://localhost:3000/artist/${id}`, {
+            const response = await fetch(`REACT_APP_SERVER_BASE_URL/artist/${id}`, {
                 method: 'GET',
                 headers: {
                     'X-XAPP-Token': token as string
@@ -235,7 +235,7 @@ export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({ children }
         }));
 
         try {
-            const response = await fetch("http://localhost:3000/addToFavorites", {
+            const response = await fetch("REACT_APP_SERVER_BASE_URL/addToFavorites", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",

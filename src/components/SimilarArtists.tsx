@@ -48,7 +48,7 @@ const SimilarArtists: React.FC<SimilarArtistsProps> = ({ link, SetSelectedArtist
         if (!localStorage.getItem('token')) {
           console.log("no token");
           try {
-            const response: Response = await fetch('http://localhost:3000/getToken', {
+            const response: Response = await fetch('REACT_APP_SERVER_BASE_URL/getToken', {
               method: 'POST'
             });
             const data: { token: string } = await response.json();
@@ -91,7 +91,7 @@ const SimilarArtists: React.FC<SimilarArtistsProps> = ({ link, SetSelectedArtist
         
         if (!token) {
           try {
-            const response: Response = await fetch('http://localhost:3000/getToken', {
+            const response: Response = await fetch('REACT_APP_SERVER_BASE_URL/getToken', {
               method: 'POST'
             });
             const data: { token: string } = await response.json();
@@ -128,7 +128,7 @@ const SimilarArtists: React.FC<SimilarArtistsProps> = ({ link, SetSelectedArtist
                 return;
             }
             try {
-                const response = await fetch(`http://localhost:3000/similarto?artist_id=${id}`, {
+                const response = await fetch(`REACT_APP_SERVER_BASE_URL/similarto?artist_id=${id}`, {
                     method: 'GET',
                     headers: {
                         'X-XAPP-Token': token as string
@@ -150,7 +150,7 @@ const SimilarArtists: React.FC<SimilarArtistsProps> = ({ link, SetSelectedArtist
         const id = artist._links.self.href.split('/').pop();
         console.log("Adding to favorites:");
         try {
-            const response = await fetch("http://localhost:3000/addToFavorites", {
+            const response = await fetch("REACT_APP_SERVER_BASE_URL/addToFavorites", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",

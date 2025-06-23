@@ -25,7 +25,7 @@ const RegisterPage: React.FC = () => {
 
     const checkEmailExists = async (email: string): Promise<EmailCheckResponse> => {
         try {
-            const response = await fetch("http://localhost:3000/checkEmail", {
+            const response = await fetch("REACT_APP_SERVER_BASE_URL/checkEmail", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -93,7 +93,7 @@ const RegisterPage: React.FC = () => {
 
         
         try {
-            const response = await fetch("http://localhost:3000/addUser", {
+            const response = await fetch("REACT_APP_SERVER_BASE_URL/addUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -104,7 +104,7 @@ const RegisterPage: React.FC = () => {
 
             if (response.ok) {
                 try {
-                    const loginResponse = await fetch("http://localhost:3000/loginUser", {
+                    const loginResponse = await fetch("REACT_APP_SERVER_BASE_URL/loginUser", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",

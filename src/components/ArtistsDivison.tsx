@@ -21,7 +21,7 @@ const ArtistsDivision: React.FC<ArtistsDivisionProps> = ({ link, image }) => {
   useEffect(() => {
     const checkAuth = async (): Promise<void> => {
       try {
-        const response = await fetch("http://localhost:3000/verifyToken", {
+        const response = await fetch("REACT_APP_SERVER_BASE_URL/verifyToken", {
           method: "GET",
           credentials: "include", 
         });

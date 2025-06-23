@@ -37,7 +37,7 @@ async function getSetToken(): Promise<string | null> {
   if (!localStorage.getItem('token')) {
     console.log("no token");
     try {
-      const response: Response = await fetch('http://localhost:3000/getToken', {
+      const response: Response = await fetch('REACT_APP_SERVER_BASE_URL/getToken', {
         method: 'POST'
       });
       const data: { token: string } = await response.json();
@@ -80,7 +80,7 @@ async function getSetToken(): Promise<string | null> {
   
   if (!token) {
     try {
-      const response: Response = await fetch('http://localhost:3000/getToken', {
+      const response: Response = await fetch('REACT_APP_SERVER_BASE_URL/getToken', {
         method: 'POST'
       });
       const data: { token: string } = await response.json();
@@ -139,7 +139,7 @@ const Favorites: React.FC = () => {
       if (spinElement) spinElement.style.display = "block"; 
       
       try {
-        const response = await fetch('http://localhost:3000/getFavorites', {
+        const response = await fetch('REACT_APP_SERVER_BASE_URL/getFavorites', {
           method: 'GET',
           credentials: 'include',
         });
@@ -223,7 +223,7 @@ const Favorites: React.FC = () => {
 
   const remove = async (id: string, artistName: string) => {
     try {
-      const response = await fetch(`http://localhost:3000/removeFavorites?id=${id}`, {
+      const response = await fetch(`REACT_APP_SERVER_BASE_URL/removeFavorites?id=${id}`, {
         method: 'DELETE',
         credentials: 'include',
       });
@@ -284,7 +284,7 @@ const Favorites: React.FC = () => {
         setNationality(data.nationality);
       } else {
         
-        const response = await fetch(`http://localhost:3000/artist/${artist.artistId}`, {
+        const response = await fetch(`REACT_APP_SERVER_BASE_URL/artist/${artist.artistId}`, {
           method: 'GET',
           headers: {
             'X-XAPP-Token': token

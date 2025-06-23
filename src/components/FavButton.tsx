@@ -24,7 +24,7 @@ const FavButton: React.FC<FavButtonProps> = ({ isLoggedIn, isStarFilled, image, 
   useEffect(() => {
     async function loadFavorites(): Promise<void> {
       try {
-        const response = await fetch("http://localhost:3000/getFavorites", {
+        const response = await fetch("REACT_APP_SERVER_BASE_URL/getFavorites", {
           credentials: "include"
         });
         if (response.ok) {
@@ -53,7 +53,7 @@ const FavButton: React.FC<FavButtonProps> = ({ isLoggedIn, isStarFilled, image, 
     if (!localStorage.getItem('token')) {
       console.log("no token");
       try {
-        const response: Response = await fetch('http://localhost:3000/getToken', {
+        const response: Response = await fetch('REACT_APP_SERVER_BASE_URL/getToken', {
           method: 'POST'
         });
         const data: { token: string } = await response.json();
@@ -96,7 +96,7 @@ const FavButton: React.FC<FavButtonProps> = ({ isLoggedIn, isStarFilled, image, 
     
     if (!token) {
       try {
-        const response: Response = await fetch('http://localhost:3000/getToken', {
+        const response: Response = await fetch('REACT_APP_SERVER_BASE_URL/getToken', {
           method: 'POST'
         });
         const data: { token: string } = await response.json();
@@ -131,7 +131,7 @@ const FavButton: React.FC<FavButtonProps> = ({ isLoggedIn, isStarFilled, image, 
       return null;
     }
     try {
-      const response = await fetch(`http://localhost:3000/artist/${id}`, {
+      const response = await fetch(`REACT_APP_SERVER_BASE_URL/artist/${id}`, {
         method: 'GET',
         headers: {
           'X-XAPP-Token': token as string
@@ -182,7 +182,7 @@ const FavButton: React.FC<FavButtonProps> = ({ isLoggedIn, isStarFilled, image, 
 
     console.log("Updating favorites status to:", newStatus);
     try {
-      const response = await fetch("http://localhost:3000/addToFavorites", {
+      const response = await fetch("REACT_APP_SERVER_BASE_URL/addToFavorites", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

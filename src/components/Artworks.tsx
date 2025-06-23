@@ -45,7 +45,7 @@ const Artworks: React.FC<ArtworksProps> = ({ link }) => {
   useEffect(() => {
     const checkAuth = async (): Promise<void> => {
       try {
-        const response = await fetch("http://localhost:3000/verifyToken", {
+        const response = await fetch("REACT_APP_SERVER_BASE_URL/verifyToken", {
           method: "GET",
           credentials: "include", 
         });
@@ -73,7 +73,7 @@ const Artworks: React.FC<ArtworksProps> = ({ link }) => {
         setIsNull(true);
         return;
       }
-      const response = await fetch(`http://localhost:3000/artwork?artist_id=${id}&size=5`, {
+      const response = await fetch(`REACT_APP_SERVER_BASE_URL/artwork?artist_id=${id}&size=5`, {
         method: 'GET',
         headers: {
           'X-XAPP-Token': token as string
