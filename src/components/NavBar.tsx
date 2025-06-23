@@ -32,7 +32,7 @@ const NavBar: React.FC = () => {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const response = await fetch("REACT_APP_SERVER_BASE_URL/verifyToken", {
+                const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/verifyToken`, {
                     method: "GET",
                     credentials: "include", // Ensure cookies are sent
                 });
@@ -54,7 +54,7 @@ const NavBar: React.FC = () => {
                         try {
                             const email = data.email;
                             console.log(email, "email");
-                            const response = await fetch(`REACT_APP_SERVER_BASE_URL/getGravatar?email=${email}`, {
+                            const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/getGravatar?email=${email}`, {
                                 method: 'GET',
                                 credentials: 'include',
                             });
@@ -92,7 +92,7 @@ const NavBar: React.FC = () => {
 
     const deleteAccount = async (): Promise<void> => {
         try {
-            const response = await fetch("REACT_APP_SERVER_BASE_URL/deleteAccount", {
+            const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/deleteAccount`, {
                 method: "DELETE",
                 credentials: "include",
             });
@@ -114,7 +114,7 @@ const NavBar: React.FC = () => {
 
     const logoutAccount = async (): Promise<void> => {
         try {
-            const response = await fetch("REACT_APP_SERVER_BASE_URL/logout", {
+            const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/logout`, {
                 method: "POST",
                 credentials: "include",
             });

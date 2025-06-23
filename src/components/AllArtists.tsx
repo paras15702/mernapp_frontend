@@ -47,7 +47,7 @@ const AllArtists: React.FC = () => {
   useEffect(() => {
     const checkAuth = async (): Promise<void> => {
       try {
-        const response = await fetch("REACT_APP_SERVER_BASE_URL/verifyToken", {
+        const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/verifyToken`, {
           method: "GET",
           credentials: "include", 
         });
@@ -69,7 +69,7 @@ const AllArtists: React.FC = () => {
   useEffect(() => {
     async function loadFavorites(): Promise<void> {
       try {
-        const response = await fetch("REACT_APP_SERVER_BASE_URL/getFavorites", {
+        const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/getFavorites`, {
           credentials: "include"
         });
         if (response.ok) {
@@ -133,7 +133,7 @@ const AllArtists: React.FC = () => {
       if (!localStorage.getItem('token')) {
         console.log("no token");
         try {
-          const response: Response = await fetch('REACT_APP_SERVER_BASE_URL/getToken', {
+          const response: Response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/getToken`, {
             method: 'POST'
           });
           const data: { token: string } = await response.json();
@@ -176,7 +176,7 @@ const AllArtists: React.FC = () => {
       
       if (!token) {
         try {
-          const response: Response = await fetch('REACT_APP_SERVER_BASE_URL/getToken', {
+          const response: Response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/getToken`, {
             method: 'POST'
           });
           const data: { token: string } = await response.json();
@@ -211,7 +211,7 @@ const AllArtists: React.FC = () => {
         return;
       }
       try {
-        const response = await fetch(`REACT_APP_SERVER_BASE_URL/similarto?artist_id=${artistId}`, {
+        const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/similarto?artist_id=${artistId}`, {
           method: 'GET',
           headers: {
             'X-XAPP-Token': token as string
@@ -244,7 +244,7 @@ const AllArtists: React.FC = () => {
       if (!localStorage.getItem('token')) {
         console.log("no token");
         try {
-          const response: Response = await fetch('REACT_APP_SERVER_BASE_URL/getToken', {
+          const response: Response = await fetch('${process.env.REACT_APP_SERVER_BASE_URL}/getToken', {
             method: 'POST'
           });
           const data: { token: string } = await response.json();
@@ -287,7 +287,7 @@ const AllArtists: React.FC = () => {
       
       if (!token) {
         try {
-          const response: Response = await fetch('REACT_APP_SERVER_BASE_URL/getToken', {
+          const response: Response = await fetch('${process.env.REACT_APP_SERVER_BASE_URL}/getToken', {
             method: 'POST'
           });
           const data: { token: string } = await response.json();
@@ -323,7 +323,7 @@ const AllArtists: React.FC = () => {
         setIsLoading(false);
         return;
       }
-      const response = await fetch(`REACT_APP_SERVER_BASE_URL/artists?name=${name}`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/artists?name=${name}`, {
         method: 'GET',
         headers: {
           'X-XAPP-Token': token as string

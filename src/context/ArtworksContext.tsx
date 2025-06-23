@@ -97,7 +97,7 @@ export async function getSetToken(): Promise<string | null> {
   if (!localStorage.getItem('token')) {
     console.log("no token");
     try {
-      const response: Response = await fetch('REACT_APP_SERVER_BASE_URL/getToken', {
+      const response: Response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/getToken`, {
         method: 'POST'
       });
       const data: { token: string } = await response.json();
@@ -140,7 +140,7 @@ export async function getSetToken(): Promise<string | null> {
   
   if (!token) {
     try {
-      const response: Response = await fetch('REACT_APP_SERVER_BASE_URL/getToken', {
+      const response: Response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/getToken`, {
         method: 'POST'
       });
       const data: { token: string } = await response.json();

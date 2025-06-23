@@ -51,7 +51,7 @@ const SimilarArtworks: React.FC<SimilarArtworksProps> = ({ id, close, image, nam
       }
       
       try {
-        const response = await fetch(`REACT_APP_SERVER_BASE_URL/genes?artwork_id=${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/genes?artwork_id=${id}`, {
           method: 'GET',
           headers: {
             'X-XAPP-Token': token as string
